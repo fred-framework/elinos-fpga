@@ -1,6 +1,4 @@
-//arch = zynqmp; split = false; format = BIN
-//the_ROM_image:
 all:
 {
-	[destination_device = pl]/home/aamory/repos/pikeos/workspace/edt_zcu102_wrapper/hw/edt_zcu102_wrapper.bit
+	[destination_device = pl]<full path to the bitstream>/edt_zcu102_wrapper.bit
 }

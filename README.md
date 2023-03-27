@@ -44,6 +44,7 @@ bootgen -image bitstream.bif -arch zynqmp -o bitstream.bit.bin
 The following kernel features must be enabled in the ElinOS image:
  - CONFIG_FPGA, CONFIG_FPGA_MGR_ZYNQMP_FPGA: to enable FPGA manager device driver
  - IKCONFIG: to mount /proc/config.gz
+ - Be aware that this list of kernel features is probably not complete ...
 
 
 This can be checked running a command like this:
@@ -64,16 +65,15 @@ CONFIG_FPGA_REGION=y
 CONFIG_OF_FPGA_REGION=y
 # CONFIG_FPGA_DFL is not set
 CONFIG_FPGA_MGR_ZYNQMP_FPGA=y
-
 ```
 
 ### Using FPGA Manager
 
 Copy the `bitstream.bit.bin` and `ps_pl_linux_app.elf` to the running ELinOS image. Let's assume that these were copied to the dir `/opt/fpga-mgr/`.
 
-| :warning: WARNING                                         |
-|:----------------------------------------------------------|
-| I suppose the PL device tree should be copied too.  ...   |
+| :warning: WARNING                                              |
+|:---------------------------------------------------------------|
+| TBD: I suppose the PL device tree should be copied too.  ...   |
 
 Here are some references for using FPGA manager in Linux:
  - https://www.hackster.io/anujvaishnav20/programming-the-pl-at-runtime-with-petalinux-72a820
@@ -90,11 +90,13 @@ echo 0 > /sys/class/fpga_manager/fpga0/flags
 echo /opt/fpga-mgr/staic.bin  > /sys/class/fpga_manager/fpga0/firmware
 ```
 
-and then run the application ps_pl_linux_app.elf . Press the push buttons to test the application. 
+and then run the application `ps_pl_linux_app.elf`. Press the push buttons to test the application. 
 
 ## Authors
 
  - Alexandre Amory (Feb 2023), [Real-Time Systems Laboratory (ReTiS Lab)](https://retis.santannapisa.it/), [Scuola Superiore Sant'Anna (SSSA)](https://www.santannapisa.it/), Pisa, Italy.
+
+The source code in this repo is originnaly from the [example](https://xilinx.github.io/Embedded-Design-Tutorials/docs/2020.2/build/html/docs/Introduction/ZynqMPSoC-EDT/7-design1-using-gpio-timer-interrupts.html) by Xilinx. No authorship is claimed for these files.
 
 ## Funding
  
